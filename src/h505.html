@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+    <meta name="viewport" content="width=640,initial-scale=0.5,maximum-scale=0.5, minimum-scale=0.5,user-scalable=no">
+    <meta name="viewport" content="width=750,initial-scale=0.5,maximum-scale=0.5, minimum-scale=0.5,user-scalable=no">
+    <meta name="viewport" content="width=device-width,initial-scale=0.5,maximum-scale=0.5, minimum-scale=0.5,user-scalable=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1, minimum-scale=1,user-scalable=no">
+    -->
+    <meta name="viewport" content="width=device-width,initial-scale=0.5,maximum-scale=0.5, minimum-scale=0.5,user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="./h505.css">
+</head>
+<body>
+    <div class="width-10rem">测试</div>
+    <div class="width-1rem">width-1rem</div>
+    <div class="width-5rem">width-5rem</div>
+    <div class="width-75px">width-75px</div>
+    <div class="width-150px">width-150px</div>
+    <script>
+        var dpr = window.devicePixelRatio || 1; // mac retina屏dpr=2及一个css像素点对应有4个物理像素点
+        var rem = document.documentElement.clientWidth * dpr / 10*0.5//缩小0.5
+        document.querySelector('.width-10rem').innerHTML = [
+            'dpr:' + dpr,
+            'rem:' + rem,
+            'clientWidth:' + document.documentElement.clientWidth,
+            'devicePixelRatio:' + window.devicePixelRatio,
+            ].join('<br>')
+    </script>
+</body>
+</html>

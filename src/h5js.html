@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <!--
+    <meta name="viewport" content="width=640,initial-scale=0.5,maximum-scale=0.5, minimum-scale=0.5,user-scalable=no">
+    <meta name="viewport" content="width=750,initial-scale=0.5,maximum-scale=0.5, minimum-scale=0.5,user-scalable=no">
+    <meta name="viewport" content="width=device-width,initial-scale=0.5,maximum-scale=0.5, minimum-scale=0.5,user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1,user-scalable=no">
+    <meta name="viewport" content="width=1080,initial-scale=0.333333,maximum-scale=0.333333, minimum-scale=0.333333,user-scalable=no">
+    -->
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="./h5js.css">
+    <script>
+        var dpr = window.devicePixelRatio || 1; // mac retina屏dpr=2及一个css像素点对应有4个物理像素点
+        var rem = document.documentElement.clientWidth * dpr / 10//缩小0.5
+        window.infoa = [
+            'rem:' + rem,
+            'scale:' + 1/dpr,
+            'clientWidth:' + document.documentElement.clientWidth,
+            'devicePixelRatio:' + window.devicePixelRatio,
+            ].join('<br>')
+    </script>
+    <script>
+        /* */
+        var dpr, rem, scale;
+        var docEl = document.documentElement;
+        var fontEl = document.createElement('style');
+        var metaEl = document.querySelector('meta[name="viewport"]');
+
+        dpr = window.devicePixelRatio || 1;
+        rem = docEl.clientWidth * dpr / 10;
+        scale = 1 / dpr;
+
+
+        // 设置viewport，进行缩放，达到高清效果
+        metaEl.setAttribute('content', 'width=' + dpr * docEl.clientWidth + ',initial-scale=' + scale + ',maximum-scale=' + scale + ', minimum-scale=' + scale + ',user-scalable=no');
+
+        // 设置data-dpr属性，留作的css hack之用
+        docEl.setAttribute('data-dpr', dpr);
+
+        // 动态写入样式
+        docEl.firstElementChild.appendChild(fontEl);
+        fontEl.innerHTML = 'html{font-size:' + rem + 'px!important;}';
+
+        // 给js调用的，某一dpr下rem和px之间的转换函数
+        window.rem2px = function(v) {
+            v = parseFloat(v);
+            return v * rem;
+        };
+        window.px2rem = function(v) {
+            v = parseFloat(v);
+            return v / rem;
+        };
+
+        window.dpr = dpr;
+        window.rem = rem;
+        //**/
+    </script>
+</head>
+<body>
+    <div class="width-10rem" id="infoa">测试</div>
+    <div class="width-10rem-b" id="infob">测试</div>
+    <div class="width-1rem">width-1rem</div>
+    <div class="width-5rem">width-5rem</div>
+    <div class="width-9rem">width-9rem</div><!-- -->
+    <div class="width-75px">width-75px</div>
+    <div class="width-150px">width-150px</div>
+    <div>采用js动态计算meta<br>适配效果比较好</div>
+    <input type="text" id="myFont" value="一二三四五六七八九十input">
+    <script>
+
+        document.querySelector('body').style.fontSize = 12*window.devicePixelRatio+'px'
+        // 让字体大小适配
+        // document.querySelector('#myFont').style.fontSize = 16*window.devicePixelRatio+'px'
+        document.querySelector('#infoa').innerHTML = window.infoa
+        // var dpr = window.devicePixelRatio || 1; // mac retina屏dpr=2及一个css像素点对应有4个物理像素点
+        // var rem = document.documentElement.clientWidth * dpr / 10//缩小0.5
+        document.querySelector('#infob').innerHTML = [
+            '设置好meta后数据',
+            'clientWidth:' + document.documentElement.clientWidth,
+            'devicePixelRatio:' + window.devicePixelRatio,
+            'rem2px:' + window.rem2px(1),
+            // 'dpr:' + dpr,
+            // 'rem:' + rem,
+            // 'scale:' + scale,
+            ].join('<br>')
+    </script>
+</body>
+</html>

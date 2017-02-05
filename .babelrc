@@ -1,0 +1,18 @@
+{
+    "plugins": [
+        "transform-runtime",
+        // "babel-plugin-transform-decorators-legacy", // 使用 ES7 Decorators 简化this的绑定
+        "babel-plugin-add-module-exports", // 支持 export default 这样子导出
+        ["babel-plugin-antd", { "style": false, "notes": "true:less,css:css,false:无这个配置参数就是表示不到入css和less" }]
+    ],
+    "presets": ["es2015", "react", "stage-0"],
+    "ignore":[
+        "加快编译速度, 让babel排除一些文件，当loader这些文件时不进行转换",
+        "jquery.js",
+        "jquery.min.js",
+        "angular.js",
+        "angular.min.js",
+        "bootstrap.js",
+        "bootstrap.min.js"
+    ]
+}

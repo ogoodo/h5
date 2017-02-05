@@ -1,0 +1,45 @@
+
+html {
+    width: 100%;
+    height: 100%;
+    font-size: 75px;
+}
+body {
+    margin: 0px;
+}
+/* iphone 5 */
+@media (min-device-width : 375px) {
+   html{font-size: 64px;}
+}
+/* iphone 6 */
+@media (min-device-width : 375px) {
+   html{font-size: 75px;}
+}
+/* iphone6 plus */
+@media (min-device-width : 414px) {
+    html{font-size: 82.8px;}
+}
+
+.width-10rem {
+    width: 10rem;
+    background: fuchsia;
+}
+
+.width-1rem {
+    width: 1rem;
+    background: darkseagreen;
+}
+.width-5rem {
+    width: 5rem;
+    background: hotpink;
+}
+
+.width-75px {
+    width: 75px;
+    background: steelblue;
+}
+
+.width-150px {
+    width: 150px;
+    background: darkslategray
+}
