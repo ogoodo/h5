@@ -3,16 +3,18 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const cfg = require('../config/env.config.js')
-cfg.initPath()
-const envcfg = require('../config/env.config.js').server('development')
+var envcfg = require('../config/env.config.js')
+envcfg.initPath()
+const cfg = require('../config/env.config.js').server('development')
 
 // const ROOT_PATH = path.join(process.cwd(), '.')
 // const BUILD_PATH = path.join(ROOT_PATH, 'build')
 const ROOT_PATH = envcfg.ROOT_PATH; // path.join(process.cwd(), '..')
 const BUILD_PATH = envcfg.OUT_PATH; // path.join(ROOT_PATH, 'build')
-
+envcfg = cfg
+console.log('ttttttttttttttttt11111111111111', ROOT_PATH)
 const nodeModulesPath = path.join(ROOT_PATH, 'node_modules')
+console.log('ttttttttttttttttt11111111111111 2');
 const SRC_PATH = path.join(ROOT_PATH, 'src')
 const imgPath = path.resolve(ROOT_PATH, 'src/img')
 const uiPath = path.resolve(ROOT_PATH, 'src/components')
