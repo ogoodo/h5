@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js",
-    "dev2": "node server/server.js",
     "dev": "node --harmony-async-await server/server-dev.js"
   },
   "keywords": [
